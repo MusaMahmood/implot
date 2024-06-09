@@ -1566,6 +1566,22 @@ void RenderMarkers(const _Getter& getter, ImPlotMarker marker, float size, bool 
 // [SECTION] PlotLine
 //-----------------------------------------------------------------------------
 
+void PlotLineF(const char* label_id, const float* values, int count, float xscale, float x0, int offset, int stride) { 
+    PlotLine(label_id, values, count, (double)xscale, (double)x0, ImPlotLineFlags_None, offset, stride); 
+}
+
+void PlotLineF(const char* label_id, const float* xs, const float* ys, int count, ImPlotLineFlags flags, int offset, int stride) { 
+    PlotLine(label_id, xs, ys, count, flags, offset, stride); 
+}
+
+void PlotLineD(const char* label_id, const double* values, int count, double xscale, double x0, int offset, int stride) { 
+    PlotLine(label_id, values, count, xscale, x0, ImPlotLineFlags_None, offset, stride); 
+}
+
+void PlotLineD(const char* label_id, const double* xs, const double* ys, int count, ImPlotLineFlags flags, int offset, int stride) { 
+    PlotLine(label_id, xs, ys, count, flags, offset, stride); 
+}
+
 template <typename _Getter>
 void PlotLineEx(const char* label_id, const _Getter& getter, ImPlotLineFlags flags) {
     if (BeginItemEx(label_id, Fitter1<_Getter>(getter), flags, ImPlotCol_Line)) {
